@@ -1,0 +1,17 @@
+{
+  "name": "gtsi-claude-skills",
+  "owner": {
+    "name": "Marcelo Borges / GTSI"
+  },
+  "metadata": {
+    "description": "Marketplace interno de skills Claude Code da GTSI do Grupo HP",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "gtsi-ops-plugin",
+      "description": "Skill operacional para análise, planejamento e execução assistida",
+      "source": "./plugins/gtsi-ops-plugin"
+    }
+  ]
+}

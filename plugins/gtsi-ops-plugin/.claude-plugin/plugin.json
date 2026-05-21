@@ -1,0 +1,5 @@
+{
+  "name": "gtsi-ops-plugin",
+  "description": "Adiciona a skill gtsi-ops ao Claude Code",
+  "version": "1.0.0"
+}
