@@ -1,5 +1,5 @@
 {
   "name": "gtsi-ops-plugin",
-  "description": "Skills GTSI/Sian para Claude Code: copiloto operacional (gtsi-ops) e padrões da plataforma SIAN (DAG factory, política de correção de dados, destino de dados, setup Iceberg, checklist de novo sistema)",
-  "version": "1.1.0"
+  "description": "Skills GTSI/Sian para Claude Code: copiloto operacional em 3 modos (gtsi-analyze, gtsi-plan, gtsi-execute) e padrões da plataforma SIAN (DAG factory, política de correção de dados, destino de dados, setup Iceberg, checklist de novo sistema)",
+  "version": "1.2.0"
 }
