@@ -31,9 +31,18 @@ Após instalar, as skills ficam disponíveis automaticamente — o Claude decide
 
 O plugin `gtsi-ops-plugin` inclui as seguintes skills:
 
+**Copiloto operacional (fluxo ANALYZE → PLAN → EXECUTE):**
+
 | Skill | Quando usa |
 |---|---|
-| **gtsi-ops** | Copiloto operacional corporativo — análise, planejamento e execução assistida em 3 modos (ANALYZE → PLAN → EXECUTE) |
+| **gtsi-analyze** | Problema operacional ou situação confusa — entrega diagnóstico estruturado separando sintomas de causas raiz e expondo premissas a validar |
+| **gtsi-plan** | Problema já diagnosticado — gera plano executável com etapas, dependências, riscos, critérios de sucesso e modelos de chamado Freshworks/Freshservice |
+| **gtsi-execute** | Após autorização explícita — produz artefatos (arquivos, templates, scripts, checklists) com execução incremental e bloqueio de ações destrutivas |
+
+**Plataforma de dados SIAN:**
+
+| Skill | Quando usa |
+|---|---|
 | **sian-dag-factory** | Criar, modificar ou revisar DAGs no SIAN — garante padrão factory, nomenclatura e localização correta |
 | **sian-data-correction-policy** | Pedidos de correção/patch de dados em qualquer camada (Raw/Silver/Gold) — define o que recusar e como redirecionar |
 | **sian-data-destination** | Adicionar nova fonte/sistema/modelo dbt — decide entre `gcp-sian-dados` e projeto exclusivo da empresa |
@@ -50,7 +59,9 @@ plugins/
     .claude-plugin/
       plugin.json               # metadados do plugin
     skills/
-      gtsi-ops/SKILL.md
+      gtsi-analyze/SKILL.md
+      gtsi-plan/SKILL.md
+      gtsi-execute/SKILL.md
       sian-dag-factory/SKILL.md
       sian-data-correction-policy/SKILL.md
       sian-data-destination/SKILL.md
