@@ -31,23 +31,52 @@ Após instalar, as skills ficam disponíveis automaticamente — o Claude decide
 
 O plugin `gtsi-ops-plugin` inclui as seguintes skills:
 
-**Copiloto operacional (fluxo ANALYZE → PLAN → EXECUTE):**
+**Copiloto operacional (workflow):**
 
 | Skill | Quando usa |
 |---|---|
-| **gtsi-analyze** | Problema operacional ou situação confusa — entrega diagnóstico estruturado separando sintomas de causas raiz e expondo premissas a validar |
-| **gtsi-plan** | Problema já diagnosticado — gera plano executável com etapas, dependências, riscos, critérios de sucesso e modelos de chamado Freshworks/Freshservice |
-| **gtsi-execute** | Após autorização explícita — produz artefatos (arquivos, templates, scripts, checklists) com execução incremental e bloqueio de ações destrutivas |
+| **gtsi-brainstorm** | Ideia fuzzy → design refinado em spec (com aprovação por seção) |
+| **gtsi-analyze** | Problema operacional ou situação confusa → diagnóstico estruturado |
+| **gtsi-plan** | Problema diagnosticado ou design aprovado → plano executável |
+| **gtsi-execute** | Após autorização explícita → produção de artefatos com execução incremental |
+
+**Produtividade (qualquer projeto):**
+
+| Skill | Quando usa |
+|---|---|
+| **gtsi-context-save** | Salvar estado de trabalho (git, tasks, decisões, próximos passos) em `.gtsi/context/<autor>/` |
+| **gtsi-context-restore** | Restaurar contexto salvo — lista do autor atual por default, `--all` para handoff entre devs |
+| **gtsi-code-review** | Revisar diff/PR com lente operacional (política de dados, padrões SIAN, governança, riscos) |
+
+**Operacional (gestão):**
+
+| Skill | Quando usa |
+|---|---|
+| **gtsi-status-report** | Gerar status report do período (default: última semana) consolidando git log, PRs e tarefas |
 
 **Plataforma de dados SIAN:**
 
 | Skill | Quando usa |
 |---|---|
-| **sian-dag-factory** | Criar, modificar ou revisar DAGs no SIAN — garante padrão factory, nomenclatura e localização correta |
-| **sian-data-correction-policy** | Pedidos de correção/patch de dados em qualquer camada (Raw/Silver/Gold) — define o que recusar e como redirecionar |
-| **sian-data-destination** | Adicionar nova fonte/sistema/modelo dbt — decide entre `gcp-sian-dados` e projeto exclusivo da empresa |
+| **sian-dag-review** | Revisar arquivo de DAG contra checklist completo da factory |
+| **sian-dag-factory** | Criar, modificar ou revisar DAGs no SIAN — garante padrão factory, nomenclatura e localização |
+| **sian-data-correction-policy** | Pedidos de correção/patch de dados em qualquer camada — define o que recusar |
+| **sian-data-destination** | Adicionar nova fonte/sistema/modelo dbt — decide entre `gcp-sian-dados` e projeto exclusivo |
 | **sian-iceberg-setup** | Configurar formato de ingestão — escolhe entre BigQuery nativo e Iceberg Managed |
-| **sian-new-system-checklist** | Adicionar novo sistema ou tabela ao SIAN — checklist completo de decisões e artefatos pré-código |
+| **sian-new-system-checklist** | Adicionar novo sistema ou tabela — checklist completo pré-código |
+
+## Artefatos gerados pelas skills
+
+Skills que produzem documentos salvam em `.gtsi/`, organizado por autor (detectado via `git config user.name`):
+
+```
+.gtsi/
+  context/<autor>/   # contextos salvos (gitignored — efêmero)
+  specs/<autor>/     # designs do gtsi-brainstorm (versionado)
+  reports/<autor>/   # status reports (versionado)
+  reviews/<autor>/   # code reviews e DAG reviews (versionado)
+  plans/<autor>/     # planos de implementação (versionado)
+```
 
 ## Estrutura do repositório
 
@@ -59,9 +88,15 @@ plugins/
     .claude-plugin/
       plugin.json               # metadados do plugin
     skills/
+      gtsi-brainstorm/SKILL.md
       gtsi-analyze/SKILL.md
       gtsi-plan/SKILL.md
       gtsi-execute/SKILL.md
+      gtsi-context-save/SKILL.md
+      gtsi-context-restore/SKILL.md
+      gtsi-code-review/SKILL.md
+      gtsi-status-report/SKILL.md
+      sian-dag-review/SKILL.md
       sian-dag-factory/SKILL.md
       sian-data-correction-policy/SKILL.md
       sian-data-destination/SKILL.md

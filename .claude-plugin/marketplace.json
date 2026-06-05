@@ -10,7 +10,7 @@
   "plugins": [
     {
       "name": "gtsi-ops-plugin",
-      "description": "Skill operacional para análise, planejamento e execução assistida",
+      "description": "Skills GTSI/Sian para Claude Code: copiloto operacional (brainstorm, analyze, plan, execute), produtividade (context save/restore, code review, status report) e padrões da plataforma SIAN",
       "source": "./plugins/gtsi-ops-plugin"
     }
   ]
