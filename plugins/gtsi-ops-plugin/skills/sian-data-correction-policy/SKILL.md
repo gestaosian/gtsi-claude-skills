@@ -51,5 +51,7 @@ Se alguém pedir:
 
 ## Referência
 
-- [ADR 0014](../../../docs/adr/0014-sem-correcoes-diretas-de-dados.md) — decisão arquitetural completa
-- [ADR 0009](../../../docs/adr/0009-camadas-raw-silver-gold.md) — responsabilidades de cada camada
+Os ADRs abaixo vivem no repositório da plataforma SIAN (`docs/adr/`), não neste repositório de skills:
+
+- **ADR 0014** — Sem correções diretas de dados (decisão arquitetural completa)
+- **ADR 0009** — Camadas Raw, Silver e Gold (responsabilidades de cada camada)
