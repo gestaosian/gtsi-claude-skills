@@ -1,0 +1,12 @@
+# Contextos efêmeros do gtsi-context-save (work-in-progress, não versionado)
+.gtsi/context/
+
+# Artefatos de IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
