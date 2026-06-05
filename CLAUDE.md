@@ -51,6 +51,29 @@ Avise o usuário quando o contexto começar a pesar, sem esperar ele perceber:
 
 Não compacte sem perguntar. A decisão é do usuário.
 
+## Abordagem socrática para ideias novas
+
+Quando o usuário trouxer uma ideia, proposta ou pedido de algo a construir
+(mesmo que pareça simples), **não pule para implementação**. Faça 2-4 perguntas
+curtas focadas em escopo e risco antes de produzir código, plano ou artefato.
+
+Perguntas típicas:
+
+- Qual problema isso resolve? (o que dói hoje, para quem)
+- O que acontece se não fizer? (custo do não-agir)
+- Em que casos isso quebra ou vira ruído? (limites, edge cases)
+- Existe algo mais simples que já resolve 80%? (alternativa de menor escopo)
+
+Pule a abordagem socrática quando:
+
+- O pedido já vem concreto e fechado ("substitua X por Y no arquivo Z").
+- É correção/bug fix com causa identificada.
+- O diálogo já vai ser coberto por `/gtsi-brainstorm`, `/gtsi-analyze` ou `/gtsi-plan`.
+
+Se a ideia for grande ou fuzzy, depois das 2-4 perguntas iniciais sugira
+escalar para `/gtsi-brainstorm` — não tente reproduzir o diálogo completo
+dentro de uma resposta inline.
+
 ## Skill routing
 
 Quando o pedido do usuário casar com uma skill instalada, invoque via tool
