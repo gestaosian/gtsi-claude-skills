@@ -94,6 +94,8 @@ Mapeamento principal:
 - Destino BigQuery → `/sian-data-destination`
 - Setup Iceberg → `/sian-iceberg-setup`
 - Novo sistema SIAN → `/sian-new-system-checklist`
+- Criar, revisar, migrar ou padronizar `CLAUDE.md` e `.claude/rules/`
+  → `/gtsi-claude-architect`
 
 ## Convenções de artefatos
 

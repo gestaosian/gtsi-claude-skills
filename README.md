@@ -47,7 +47,7 @@ O plugin `gtsi-ops-plugin` inclui as seguintes skills:
 | **gtsi-context-save** | Salvar estado de trabalho (git, tasks, decisões, próximos passos) em `.gtsi/context/<autor>/` |
 | **gtsi-context-restore** | Restaurar contexto salvo — lista do autor atual por default, `--all` para handoff entre devs |
 | **gtsi-code-review** | Revisar diff/PR com lente operacional (política de dados, padrões SIAN, governança, riscos) |
-
+| **gtsi-claude-architect** | Analisa e reorganiza `CLAUDE.md`, `.claude/rules/`, templates e runbooks, preservando políticas existentes |
 **Operacional (gestão):**
 
 | Skill | Quando usa |
