@@ -78,6 +78,63 @@ Antes da aprovação, pode criar apenas um relatório de diagnóstico em `.gtsi/
 8. **Aprovação antes da aplicação**
    Primeiro diagnosticar e propor; depois alterar.
 
+
+## Baseline comportamental obrigatório — princípios de Karpathy
+
+Todo `CLAUDE.md` criado ou reorganizado por esta skill deve conter uma seção explícita de princípios comportamentais baseada nestes quatro pilares:
+
+### 1. Pensar antes de alterar
+
+* Ler os arquivos relacionados antes de modificar código.
+* Não assumir requisitos, contratos, estruturas ou comportamentos não confirmados.
+* Explicitar suposições que afetem arquitetura, segurança, custo, dados ou comportamento.
+* Perguntar somente quando uma ambiguidade material impedir uma implementação segura.
+* Para ambiguidades pequenas, registrar a suposição e prosseguir.
+
+### 2. Priorizar simplicidade
+
+* Implementar a menor solução que resolva o requisito solicitado.
+* Não criar abstrações, helpers, configurações, dependências ou funcionalidades não solicitadas.
+* Não antecipar necessidades futuras sem evidência.
+* Preferir padrões já existentes no repositório.
+
+### 3. Fazer mudanças cirúrgicas
+
+* Modificar somente arquivos e trechos necessários.
+* Não refatorar código adjacente sem necessidade comprovada.
+* Não alterar nomes, comentários, formatação ou estrutura sem relação com a tarefa.
+* Preservar contratos e comportamento existente, salvo quando a solicitação exigir sua alteração.
+* Revisar o diff e remover mudanças acidentais antes de concluir.
+
+### 4. Trabalhar com resultados verificáveis
+
+* Definir o critério de sucesso antes da implementação.
+* Transformar tarefas vagas em resultados observáveis.
+* Executar a menor validação relevante.
+* Não declarar sucesso sem evidência.
+* Informar o que foi validado, o resultado e o que não pôde ser verificado.
+
+Esses princípios são obrigatórios, mas devem ser adaptados ao contexto do projeto.
+
+A skill pode:
+
+* ajustar a redação;
+* acrescentar regras específicas;
+* referenciar testes e comandos reais do projeto;
+* combinar os princípios com políticas existentes.
+
+A skill não pode:
+
+* remover qualquer um dos quatro pilares;
+* deixar os princípios apenas implícitos;
+* substituir os quatro pilares por uma frase genérica;
+* mover toda a seção para uma regra condicional;
+* colocar os princípios somente no relatório de diagnóstico.
+
+Os quatro pilares devem permanecer no `CLAUDE.md` principal porque se aplicam a qualquer tarefa no repositório.
+
+
+
 ---
 
 # Fluxo
@@ -346,32 +403,42 @@ Não criar arquivos vazios ou genéricos.
 
 ## 9. Regras para o `CLAUDE.md` principal
 
-O arquivo principal deve conter somente regras transversais:
+O arquivo principal deve conter, no mínimo:
 
 ```markdown
 # CLAUDE.md — <nome do projeto>
 
 ## Objetivo
+
 ## Princípios de trabalho
+### Pensar antes de alterar
+### Priorizar simplicidade
+### Fazer mudanças cirúrgicas
+### Trabalhar com resultados verificáveis
+
 ## Fluxo obrigatório
+
 ## Evidência e diagnóstico
+
 ## Segurança e limites de autorização
+
 ## Verificação
+
 ## Contexto arquitetural essencial
+
 ## Conhecimento compartilhado
+
 ## Regras específicas por área
+
 ## Git e PR
+
 ## Critérios de conclusão
 ```
 
-Preferências:
+Os quatro princípios comportamentais são obrigatórios e devem aparecer explicitamente no `CLAUDE.md`.
 
-* manter conciso
-* usar referências para documentação existente
-* evitar inventário volátil
-* evitar comandos destrutivos
-* evitar duplicação
-* declarar critérios verificáveis
+Não basta distribuir suas ideias em outras seções. A seção deve permitir que uma pessoa identifique claramente os quatro pilares ao ler o arquivo.
+
 
 ## 10. Regras condicionais
 
@@ -531,6 +598,33 @@ Sem alterar arquivos, resuma:
 3. quais regras se aplicam ao arquivo atual;
 4. quais fontes de conhecimento devem ser consultadas.
 ```
+### Validação do baseline comportamental
+
+Confirmar que o `CLAUDE.md` final contém, explicitamente, os quatro pilares:
+
+* pensar antes de alterar;
+* priorizar simplicidade;
+* fazer mudanças cirúrgicas;
+* trabalhar com resultados verificáveis.
+
+Executar uma verificação textual equivalente a:
+
+```bash
+grep -niE \
+  'pensar antes|priorizar simplicidade|mudanças cirúrgicas|resultados verificáveis' \
+  CLAUDE.md
+```
+
+A validação falha quando:
+
+* algum pilar não está presente;
+* os princípios existem somente em `.claude/rules/`;
+* os princípios aparecem apenas no relatório;
+* foram reduzidos a uma frase genérica sem regras operacionais;
+* a reorganização enfraqueceu seu significado.
+
+A skill não deve declarar a arquitetura concluída enquanto essa validação falhar.
+
 
 ## 17. Self-review
 
@@ -546,6 +640,9 @@ Antes de concluir, verificar:
 * o template fonte foi identificado?
 * o diff está limitado às instruções?
 * a proposta funciona para este projeto específico?
+* os quatro princípios comportamentais obrigatórios aparecem explicitamente no `CLAUDE.md`?
+* cada princípio possui instruções operacionais, e não apenas um título?
+* alguma regra específica do projeto contradiz simplicidade ou mudanças cirúrgicas?
 
 Corrigir inline antes de apresentar o resultado.
 
