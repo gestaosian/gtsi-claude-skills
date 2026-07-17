@@ -1,0 +1,6 @@
+# CODEOWNERS
+# Revisores solicitados automaticamente em PRs.
+# Docs: https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Dono global — revisor de qualquer PR
+* @wygormartins
